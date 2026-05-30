@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Wedding invitation of Gijendra Prasath & Dharanya — 16 September 2026, Adithyan Kalyana Mandapam, Sulur" />
+  <title>Gijendra Prasath & Dharanya — Wedding Invitation</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Premium ambient layers -->
+  <div class="premium-vignette" aria-hidden="true"></div>
+  <div class="premium-grain" aria-hidden="true"></div>
+
+  <!-- Custom cursor glow -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <canvas id="mouseTrail" aria-hidden="true"></canvas>
+
+  <!-- Three.js particle background -->
+  <canvas id="threeCanvas" aria-hidden="true"></canvas>
+
+  <!-- Floating roses layer -->
+  <div class="roses-layer" id="rosesLayer" aria-hidden="true"></div>
+
+  <!-- Gold sparkles — entire site start to end -->
+  <div class="sparkles-layer" id="sparklesLayer" aria-hidden="true"></div>
+
+  <!-- Premium theme layers (motion only — no content change) -->
+  <div class="cinematic-curtain" id="cinematicCurtain" aria-hidden="true"></div>
+  <div class="parallax-dreamscape" id="parallaxDreamscape" aria-hidden="true">
+    <div class="parallax-layer parallax-layer--far"></div>
+    <div class="parallax-layer parallax-layer--mid"></div>
+    <div class="parallax-layer parallax-layer--near"></div>
+  </div>
+  <div class="fireflies-layer" id="firefliesLayer" aria-hidden="true"></div>
+  <div class="golden-dust-layer" id="goldenDustLayer" aria-hidden="true"></div>
+
+  <!-- ==================== LOADING SCREEN ==================== -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+      <div class="loading-monogram">G &amp; D</div>
+      <div class="loading-bar">
+        <div class="loading-bar-fill" id="loadingBarFill"></div>
+      </div>
+      <p class="loading-text">AWAIT IS OVER...</p>
+    </div>
+  </div>
+
+  <!-- ==================== INTRO SCREEN ==================== -->
+  <section class="intro-screen section-full" id="introScreen">
+    <div class="intro-vignette"></div>
+    <div class="intro-content">
+      <p class="intro-tagline" id="introTagline">Two Hearts. One Journey. One Forever.</p>
+      <button class="btn-open-invitation hidden" id="openInvitationBtn" type="button">
+        <span class="btn-glow"></span>
+        <span class="btn-text">📩 Open Invitation</span>
+        <span class="btn-particles" id="btnParticles"></span>
+      </button>
+    </div>
+    <div class="scroll-hint hidden" id="scrollHint">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ==================== ENVELOPE SCENE ==================== -->
+  <section class="envelope-scene section-full hidden" id="envelopeScene">
+    <div class="envelope-zoom-wrap" id="envelopeZoomWrap">
+      <div class="envelope" id="envelope">
+        <div class="envelope-back"></div>
+        <div class="envelope-flap" id="envelopeFlap"></div>
+        <div class="envelope-front">
+          <div class="envelope-texture"></div>
+        </div>
+        <div class="wax-seal" id="waxSeal">
+          <span class="seal-monogram">G&amp;D</span>
+        </div>
+        <div class="envelope-card-preview" id="envelopeCardPreview"></div>
+      </div>
+      <div class="envelope-particles" id="envelopeParticles"></div>
+    </div>
+  </section>
+
+  <!-- ==================== INVITATION CARD ==================== -->
+  <section class="invitation-section hidden" id="invitationSection">
+    <div class="invitation-card premium-invite" id="invitationCard">
+      <div class="card-border-glow"></div>
+      <div class="card-corner card-corner--tl" aria-hidden="true"></div>
+      <div class="card-corner card-corner--tr" aria-hidden="true"></div>
+      <div class="card-corner card-corner--bl" aria-hidden="true"></div>
+      <div class="card-corner card-corner--br" aria-hidden="true"></div>
+      <div class="card-inner">
+        <p class="card-families">Together with their families</p>
+        <h2 class="card-groom" data-line>Gijendra Prasath</h2>
+        <div class="card-heart" data-line>❤️</div>
+        <h2 class="card-bride" data-line>Dharanya</h2>
+        <p class="card-request" data-line>request the pleasure of your presence<br />at their wedding celebration</p>
+        <div class="card-divider" data-line></div>
+        <div class="card-details">
+          <div class="card-detail" data-line>
+            <span class="detail-label">Date</span>
+            <span class="detail-value" id="weddingDate">16 September 2026</span>
+          </div>
+          <div class="card-detail" data-line>
+            <span class="detail-label">Time</span>
+            <span class="detail-value">6:00 PM onwards</span>
+          </div>
+          <div class="card-detail" data-line>
+            <span class="detail-label">Venue</span>
+            <span class="detail-value">Adithyan Kalyana Mandapam<br />Kannampalayam Road, Sulur, Coimbatore</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CONTENT (after envelope) ==================== -->
+  <main class="main-content hidden" id="mainContent">
+
+    <!-- ONCE UPON A TIME -->
+    <section class="once-section section-padded" id="onceSection">
+      <div class="once-card premium-panel reveal storybook-page" id="storybookPage">
+        <div class="storybook-page-inner">
+          <div class="storybook-page-face">
+            <div class="ornament-line ornament-line--wide"></div>
+            <h2 class="once-title">Once Upon A Time...</h2>
+            <p class="once-text">In a world of endless possibilities, two souls were destined to meet.</p>
+            <div class="ornament-line ornament-line--wide"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAMILY -->
+    <section class="family-section section-padded" id="familySection">
+      <p class="family-blessing-line reveal">With the blessings of our beloved elders</p>
+
+      <div class="family-columns">
+        <div class="family-column family-groom reveal-family">
+          <h3 class="family-side-title">🤵 Groom's Family</h3>
+          <div class="family-member">
+            <span class="family-role">👨 Groom's Father</span>
+            <span class="family-name">N. Selvaraj</span>
+          </div>
+          <div class="family-member">
+            <span class="family-role">👩 Groom's Mother</span>
+            <span class="family-name">S. Hema Savathiri</span>
+          </div>
+          <div class="family-member">
+            <span class="family-role">🤵 Groom's Bava</span>
+            <span class="family-name">R. Gowtham Prasath</span>
+          </div>
+          <div class="family-member">
+            <span class="family-role">👧 Groom's Sister</span>
+            <span class="family-name">S. Jayachitra</span>
+          </div>
+          <div class="family-member">
+            <span class="family-role">👦 Master</span>
+            <span class="family-name">G. J. Sashtik</span>
+          </div>
+        </div>
+
+        <div class="family-divider" aria-hidden="true">
+          <span class="family-heart">❤</span>
+        </div>
+
+        <div class="family-column family-bride reveal-family">
+          <h3 class="family-side-title">👰 Bride's Family</h3>
+          <div class="family-member">
+            <span class="family-role">👨 Bride's Father</span>
+            <span class="family-name">D. Pragtheeswaran</span>
+          </div>
+          <div class="family-member">
+            <span class="family-role">👩 Bride's Mother</span>
+            <span class="family-name">P. Radhamani</span>
+          </div>
+          <div class="family-member">
+            <span class="family-role">👧 Bride's Sister</span>
+            <span class="family-name">P. Nivethitha</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="countdown-section section-padded" id="countdownSection">
+      <h2 class="section-title reveal">Our Forever Begins In</h2>
+      <div class="countdown-glass premium-panel reveal-scale" id="countdownGlass">
+        <div class="countdown-grid">
+          <div class="countdown-unit">
+            <span class="countdown-number" id="countDays">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="countHours">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="countMinutes">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="countSeconds">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+        <p class="countdown-message hidden" id="countdownMessage">Today Is The Day ❤️</p>
+      </div>
+    </section>
+
+    <!-- WEDDING EVENTS -->
+    <section class="events-section section-padded" id="eventsSection">
+      <h2 class="section-title reveal">Wedding Events</h2>
+      <p class="events-date reveal">16 September 2026</p>
+
+      <div class="events-grid">
+        <article class="event-card reveal-event">
+          <div class="event-emoji">💒</div>
+          <h3 class="event-name">Wedding</h3>
+          <p class="event-time">16 September 2026</p>
+          <p class="event-venue">Adithyan Kalyana Mandapam, Sulur</p>
+        </article>
+
+        <article class="event-card reveal-event event-featured">
+          <div class="event-emoji">🪔</div>
+          <h3 class="event-name">Nalungu</h3>
+          <p class="event-time">6:00 PM – 7:05 PM</p>
+          <p class="event-venue">Adithyan Kalyana Mandapam, Sulur</p>
+        </article>
+
+        <article class="event-card reveal-event">
+          <div class="event-emoji">🎉</div>
+          <h3 class="event-name">Reception</h3>
+          <p class="event-time">7:05 PM onwards</p>
+          <p class="event-venue">Adithyan Kalyana Mandapam, Sulur</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- VENUE -->
+    <section class="venue-section section-padded" id="venueSection">
+      <h2 class="section-title reveal">The Venue</h2>
+      <p class="section-subtitle reveal">Join us at our celebration venue</p>
+
+      <div class="venue-card premium-panel reveal">
+        <div class="venue-map-wrap">
+          <iframe
+            id="venueMap"
+            title="Adithyan Kalyana Mandapam location"
+            src="https://maps.google.com/maps?q=Adithyan+Kalyana+Mandapam,+Kannampalayam+Road,+Ranganathapuram,+Sulur,+Coimbatore+641402&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div class="venue-info">
+          <h3>Adithyan Kalyana Mandapam</h3>
+          <p>Kannampalayam Road, Ranganathapuram, Sulur, Coimbatore 641402</p>
+          <div class="venue-buttons">
+            <a class="venue-btn venue-btn-primary" href="https://www.google.co.in/maps/dir/Sulur,+Tamil+Nadu/Adithyan+Kalyana+Mandapam+(Sulur),+Road,+Ranganathapuram,+Kannampalayam,+Sulur,+Tamil+Nadu+641402/@11.0161468,77.10591,15z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x3ba855b5630f846d:0xbfaf0134da155f58!2m2!1d77.124616!2d11.025449!1m5!1m1!1s0x3ba855bb5af6a1f7:0xcd06559097550740!2m2!1d77.1085203!2d11.006956?entry=ttu" target="_blank" rel="noopener">
+              📍 Get Directions
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINALE -->
+    <section class="finale-section section-full" id="finaleSection">
+      <div class="finale-stars" id="finaleStars" aria-hidden="true"></div>
+      <canvas class="finale-fireworks" id="finaleFireworks" aria-hidden="true"></canvas>
+      <div class="finale-golden-rain" id="finaleGoldenRain" aria-hidden="true"></div>
+      <div class="finale-confetti" id="finaleConfetti" aria-hidden="true"></div>
+      <div class="finale-bg-pattern" aria-hidden="true"></div>
+      <div class="finale-bg-glow" aria-hidden="true"></div>
+      <div class="finale-frame reveal-scale">
+        <div class="finale-frame-inner">
+          <p class="finale-date-badge">16 · September · 2026</p>
+          <h2 class="finale-title" id="finaleTitle">The Beginning Of Forever</h2>
+          <div class="finale-ornament-line" aria-hidden="true"></div>
+          <div class="finale-names" id="finaleNames">
+            <p class="finale-groom-name">Gijendra Prasath</p>
+            <p class="finale-heart-line" aria-hidden="true">❤</p>
+            <p class="finale-bride-name">Dharanya</p>
+          </div>
+          <p class="finale-venue">Adithyan Kalyana Mandapam · Sulur, Coimbatore</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Background video (optional) -->
+  <video class="bg-video hidden" id="bgVideo" autoplay muted loop playsinline>
+    <source src="assets/videos/background.mp4" type="video/mp4" />
+  </video>
+
+  <!-- CDN Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <script src="themes-effects.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
