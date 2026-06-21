@@ -304,21 +304,28 @@ button {
 }
 
 .intro-tagline {
-  font-family: var(--font-elegant);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #FFD700;
-  opacity: 1;
-  line-height: 1.6;
-  text-align: center;
-  max-width: 28ch;
-  margin: 0 auto;
+    font-family: var(--font-elegant);
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: #FFD700;
 
-  text-shadow:
-    0 0 10px rgba(255,215,0,0.8),
-    0 0 20px rgba(255,215,0,0.6),
-    0 0 40px rgba(255,215,0,0.4);
+    text-align: center;
+    line-height: 1.4;
+
+    width: 90%;
+    max-width: 850px;
+    margin: 0 auto;
+
+    letter-spacing: 0.03em;
+
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+
+    text-shadow:
+      0 0 10px rgba(255,215,0,.8),
+      0 0 20px rgba(255,215,0,.6),
+      0 0 40px rgba(255,215,0,.4);
 }
 
 .btn-open-invitation {
@@ -2074,4 +2081,13 @@ body.scroll-fallback .countdown-unit {
   .finale-confetti {
     display: none !important;
   }
+}
+
+@media (max-width: 768px) {
+    .intro-tagline {
+        font-size: 2rem;
+        width: 95%;
+        line-height: 1.5;
+        letter-spacing: 0.02em;
+    }
 }
