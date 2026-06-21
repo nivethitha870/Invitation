@@ -305,27 +305,22 @@ button {
 
 .intro-tagline {
     font-family: var(--font-elegant);
-    font-size: clamp(1.8rem, 4vw, 3.5rem);
-    font-weight: 700;
+    font-size: clamp(1.2rem, 2.5vw, 2.8rem);
     color: #FFD700;
 
-    text-align: center;
-    line-height: 1.4;
+    width: 100%;
+    max-width: none;
 
-    width: 90%;
-    max-width: 850px;
+    text-align: center;
+    white-space: nowrap;
+
+    letter-spacing: 0.02em;
     margin: 0 auto;
 
-    letter-spacing: 0.03em;
-
-    white-space: normal;
-    word-break: keep-all;
-    overflow-wrap: break-word;
-
     text-shadow:
-      0 0 10px rgba(255,215,0,.8),
-      0 0 20px rgba(255,215,0,.6),
-      0 0 40px rgba(255,215,0,.4);
+      0 0 10px rgba(255,215,0,0.8),
+      0 0 20px rgba(255,215,0,0.6),
+      0 0 40px rgba(255,215,0,0.4);
 }
 
 .btn-open-invitation {
